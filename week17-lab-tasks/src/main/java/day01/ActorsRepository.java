@@ -28,15 +28,38 @@ public class ActorsRepository {
         try(Connection connection = dataSource.getConnection();
             PreparedStatement stmt = connection.prepareStatement("SELECT actor_name FROM actors WHERE actor_name LIKE ?")) {
             stmt.setString(1, prefix + "%");
-            try(ResultSet rs = stmt.executeQuery()) {
-                while (rs.next()) {
-                    String actorName = rs.getString("actor_name");
-                    result.add(actorName);
-                }
-            }
+            selectActorsByPreparedStatement(stmt, result);
         } catch (SQLException sqle) {
             throw new IllegalStateException("Cannot query!", sqle);
         }
         return result;
     }
+
+    public void selectActorsByPreparedStatement(PreparedStatement stmt, List<String> result) {
+        try(ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                String actorName = rs.getString("actor_name");
+                result.add(actorName);
+            }
+        } catch (SQLException sqle) {
+            throw new IllegalStateException("Cannot query!", sqle);
+        }
+    }
+
+//    public List<String> findActorsWithPrefix(String prefix) {
+//        List<String> result = new ArrayList<>();
+//        try(Connection connection = dataSource.getConnection();
+//            PreparedStatement stmt = connection.prepareStatement("SELECT actor_name FROM actors WHERE actor_name LIKE ?")) {
+//            stmt.setString(1, prefix + "%");
+//            try(ResultSet rs = stmt.executeQuery()) {
+//                while (rs.next()) {
+//                    String actorName = rs.getString("actor_name");
+//                    result.add(actorName);
+//                }
+//            }
+//        } catch (SQLException sqle) {
+//            throw new IllegalStateException("Cannot query!", sqle);
+//        }
+//        return result;
+//    }
 }
