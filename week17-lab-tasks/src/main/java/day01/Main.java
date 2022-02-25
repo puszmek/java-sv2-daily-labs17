@@ -2,9 +2,12 @@ package day01;
 
 import org.mariadb.jdbc.MariaDbDataSource;
 
-//import java.sql.Connection;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-//import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.sql.Statement;
 
 public class Main {
 
@@ -29,5 +32,18 @@ public class Main {
 //        }
 
         System.out.println(actorsRepository.findActorsWithPrefix("J"));
+
+//        try (Connection conn = dataSource.getConnection();
+//             Statement stmt = conn.createStatement();
+//             ResultSet rs = stmt.executeQuery("SELECT actor_name FROM actors WHERE actor_name LIKE 'J%'")) {
+//            List<String> result = new ArrayList<>();
+//            while (rs.next()) {
+//                String actorName = rs.getString("actor_name");
+//                result.add(actorName);
+//            }
+//            System.out.println(result);
+//        } catch (SQLException sqle) {
+//            throw new IllegalStateException("Cannot select actor_name", sqle);
+//        }
     }
 }
