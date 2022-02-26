@@ -1,6 +1,5 @@
 package day02;
 
-import day01.ActorsRepository;
 import org.flywaydb.core.Flyway;
 import org.mariadb.jdbc.MariaDbDataSource;
 
