@@ -32,6 +32,11 @@
             <artifactId>mariadb-java-client-jre7</artifactId>
             <version>1.6.1</version>
         </dependency>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-mysql</artifactId>
+            <version>8.5.0</version>
+        </dependency>
     </dependencies>
 
 </project>
