@@ -25,7 +25,7 @@ public class Main {
 
         MoviesRepository moviesRepository = new MoviesRepository(dataSource);
         moviesRepository.saveMovie("Titanic", LocalDate.of(1997,12,11));
-        moviesRepository.saveMovie("Lord Of The Rings", LocalDate.of(200,12,23));
+        moviesRepository.saveMovie("Lord Of The Rings", LocalDate.of(2000,12,23));
 
         System.out.println(moviesRepository.findAllMovies());
     }
